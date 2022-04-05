@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "142727318793",
+    "project_id": "actividades-curso-movile-c6782",
+    "storage_bucket": "actividades-curso-movile-c6782.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:142727318793:android:f5ef009be92607741397d8",
+        "android_client_info": {
+          "package_name": "mx.iteso.foto_share"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "142727318793-39250uit694vkfjp4hh4jt18tgeomtms.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "mx.iteso.foto_share",
+            "certificate_hash": "7441ebb1f3106cf9dc04eef840fba31d391666a1"
+          }
+        },
+        {
+          "client_id": "142727318793-473i9kt099it0vnjihkmadj1qfcnr7ar.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZgMorikZCELwnNPvBHZ4SkEli6Iut6Es"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "142727318793-473i9kt099it0vnjihkmadj1qfcnr7ar.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
