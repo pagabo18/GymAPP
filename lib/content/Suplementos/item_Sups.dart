@@ -5,15 +5,15 @@ import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:http/http.dart' as http;
 
-class ItemPublic extends StatefulWidget {
+class ItemSups extends StatefulWidget {
   final Map<String, dynamic> publicFData;
-  ItemPublic({Key? key, required this.publicFData}) : super(key: key);
+  ItemSups({Key? key, required this.publicFData}) : super(key: key);
 
   @override
-  State<ItemPublic> createState() => _ItemPublicState();
+  State<ItemSups> createState() => _ItemSupsState();
 }
 
-class _ItemPublicState extends State<ItemPublic> {
+class _ItemSupsState extends State<ItemSups> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -31,7 +31,7 @@ class _ItemPublicState extends State<ItemPublic> {
             ),
             ListTile(
               title: Text("${widget.publicFData["nombre"]}"),
-              subtitle: Text("${widget.publicFData["Descripcion"]}"),
+              subtitle: Text("${widget.publicFData["tipo"]}"),
               trailing: Wrap(
                 children: [
                   IconButton(
@@ -49,13 +49,9 @@ class _ItemPublicState extends State<ItemPublic> {
 
                       final date = widget.publicFData["publishedAt"].toDate();
 
-                      await Share.shareFiles(
-                        [path],
-                        subject: widget.publicFData["title"],
-                        text: widget.publicFData["publishedAt"]
-                            .toDate()
-                            .toString(),
-                      );
+                      await Share.shareFiles([path],
+                          subject: widget.publicFData["title"],
+                          text: widget.publicFData["Descripcion"]);
                     },
                   ),
                 ],

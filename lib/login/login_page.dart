@@ -18,32 +18,26 @@ class _LoginPageState extends State<LoginPage> {
         child: ListView(
           children: [
             Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: Text(
-                "Sign In",
-                style : TextStyle(
-                  fontSize: 36,
-                  fontWeight: FontWeight.bold,
-                )
-              ),
+              padding: const EdgeInsets.all(10.0),
+              child: Text("GYMAPP",
+                  style: TextStyle(
+                    fontSize: 49,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.deepPurple,
+                  )),
             ),
             Image.asset(
-              "assets/icon/instagram.png",
-              height : 100,
-              ),
-            SizedBox(height : 200),
-            MaterialButton(
-              child: Text("Iniciar anonimo"),
-              color: Colors.grey,
-              onPressed: (){},
+              "assets/icon/dumbbell.png",
+              height: 100,
             ),
+            SizedBox(height: 200),
             Text(
               "Utiliza un red social",
             ),
             MaterialButton(
               child: Text("Iniciar con Google"),
-              color: Colors.green,
-              onPressed: (){
+              color: Colors.lightBlue,
+              onPressed: () {
                 BlocProvider.of<AuthBloc>(context).add(GoogleAuthEvent());
               },
             ),

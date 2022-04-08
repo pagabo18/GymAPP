@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 
-class ItemEspera extends StatefulWidget {
+class ItemRutinasDef extends StatefulWidget {
   final Map<String, dynamic> nonPublicFData;
-  ItemEspera({Key? key, required this.nonPublicFData}) : super(key: key);
+  ItemRutinasDef({Key? key, required this.nonPublicFData}) : super(key: key);
 
   @override
-  State<ItemEspera> createState() => _ItemEsperaState();
+  State<ItemRutinasDef> createState() => _ItemRutinasDefState();
 }
 
-class _ItemEsperaState extends State<ItemEspera> {
+class _ItemRutinasDefState extends State<ItemRutinasDef> {
   bool _switchValue = false;
   @override
   void initState() {
-    _switchValue = widget.nonPublicFData["public"];
     super.initState();
   }
 
@@ -27,14 +26,13 @@ class _ItemEsperaState extends State<ItemEspera> {
             AspectRatio(
               aspectRatio: 16 / 9,
               child: Image.network(
-                "${widget.nonPublicFData["picture"]}",
+                "${widget.nonPublicFData["imagen"]}",
                 fit: BoxFit.cover,
               ),
             ),
             SwitchListTile(
-              title: Text("${widget.nonPublicFData["title"]}"),
-              subtitle:
-                  Text("${widget.nonPublicFData["publishedAt"].toDate()}"),
+              title: Text("${widget.nonPublicFData["Nombre"]}"),
+              subtitle: Text("${widget.nonPublicFData["Descripcion"]}"),
               value: _switchValue,
               onChanged: (newVal) {
                 setState(() {

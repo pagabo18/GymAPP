@@ -1,41 +1,78 @@
 {
   "project_info": {
-    "project_number": "142727318793",
-    "project_id": "actividades-curso-movile-c6782",
-    "storage_bucket": "actividades-curso-movile-c6782.appspot.com"
+    "project_number": "388989945044",
+    "project_id": "actividades-curso-movile-baf8b",
+    "storage_bucket": "actividades-curso-movile-baf8b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:142727318793:android:f5ef009be92607741397d8",
+        "mobilesdk_app_id": "1:388989945044:android:c6391ff04fc2621460a741",
         "android_client_info": {
-          "package_name": "mx.iteso.foto_share"
+          "package_name": "com.example.app_firebase"
         }
       },
       "oauth_client": [
         {
-          "client_id": "142727318793-39250uit694vkfjp4hh4jt18tgeomtms.apps.googleusercontent.com",
+          "client_id": "388989945044-1161f27u2ptbc1vj0u9otvtc3ak92q0c.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "mx.iteso.foto_share",
-            "certificate_hash": "7441ebb1f3106cf9dc04eef840fba31d391666a1"
+            "package_name": "com.example.app_firebase",
+            "certificate_hash": "80c9c61431c2219d73b979aa8f68563d02418146"
           }
         },
         {
-          "client_id": "142727318793-473i9kt099it0vnjihkmadj1qfcnr7ar.apps.googleusercontent.com",
+          "client_id": "388989945044-0bks3n9ofjt87hnnr1lr4dbg5mtqngno.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAZgMorikZCELwnNPvBHZ4SkEli6Iut6Es"
+          "current_key": "AIzaSyCN9iJgOk9y0c5o-uR2aIvF4NQO15m918c"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "142727318793-473i9kt099it0vnjihkmadj1qfcnr7ar.apps.googleusercontent.com",
+              "client_id": "388989945044-0bks3n9ofjt87hnnr1lr4dbg5mtqngno.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:388989945044:android:4a93ea82f5b9473460a741",
+        "android_client_info": {
+          "package_name": "mx.iteso.foto_share"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "388989945044-oh59j4qcpe598cttcjluaor1c0861ejf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "mx.iteso.foto_share",
+            "certificate_hash": "80c9c61431c2219d73b979aa8f68563d02418146"
+          }
+        },
+        {
+          "client_id": "388989945044-0bks3n9ofjt87hnnr1lr4dbg5mtqngno.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCN9iJgOk9y0c5o-uR2aIvF4NQO15m918c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "388989945044-0bks3n9ofjt87hnnr1lr4dbg5mtqngno.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

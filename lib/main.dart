@@ -8,7 +8,6 @@ import 'package:foto_share/home/home_Page.dart';
 import 'package:foto_share/auth/bloc/auth_bloc.dart';
 import 'package:foto_share/login/login_page.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -38,8 +37,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: Colors.purple,
+        colorScheme: ColorScheme.light(
+          primary: Colors.white70,
+          onPrimary: Colors.white,
+          secondary: Colors.purple,
+          onSecondary: Colors.white,
         ),
       ),
       home: BlocConsumer<AuthBloc, AuthState>(

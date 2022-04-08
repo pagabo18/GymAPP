@@ -42,14 +42,60 @@ class _ItemEsperaState extends State<ItemEspera> {
                 });
               },
             ),
-            MaterialButton(
-              child: Icon(Icons.star),
-              onPressed: (){}
-
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                FlatButton(
+                  child: Text("${widget.nonPublicFData["public"]}"),
+                  onPressed: () {
+                    // editDialog(
+                    //     widget.nonPublicFData['title'],
+                    //     widget.nonPublicFData['description'],
+                    //     widget.nonPublicFData['public'],
+                    //     widget.nonPublicFData['id']);
+                    // Navigator.of(context).push(value: widget.nonPublicFData['id']);
+                  },
+                ),
+                MaterialButton(child: Icon(Icons.star), onPressed: () {}),
+              ],
             ),
           ],
         ),
       ),
     );
   }
+
+  Future editDialog(
+          String title, String description, bool publico, String uid) =>
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text("Editar"),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                decoration: InputDecoration(
+                  labelText: "Título",
+                ),
+              ),
+              TextField(
+                decoration: InputDecoration(
+                  labelText: "Descripción",
+                ),
+              ),
+            ],
+          ),
+          actions: [
+            FlatButton(
+              child: Text("Cancelar"),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+            FlatButton(
+              child: Text("Aceptar"),
+              onPressed: () => Navigator.of(context).pop(),
+            ),
+          ],
+        ),
+      );
 }
