@@ -21,6 +21,9 @@ dependencies:
   share: ^2.0.4
   http:
   path_provider: ^2.0.9
+  expansion_card: 
+  get:
+  
   # Firebase
   firebase_auth:
   firebase_core:

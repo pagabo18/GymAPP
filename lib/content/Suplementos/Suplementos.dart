@@ -2,18 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutterfire_ui/database.dart';
 import 'package:flutterfire_ui/firestore.dart';
+import 'package:foto_share/content/Suplementos/catalog_products.dart';
 import 'package:foto_share/content/Suplementos/item_Sups.dart';
-
+import 'package:foto_share/content/Suplementos/views/cart_screen.dart';
+import 'package:get/get.dart';
 class Suplementos extends StatelessWidget {
   const Suplementos({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return FirestoreListView(
-        query: FirebaseFirestore.instance.collection('gymSuplementos'),
-        itemBuilder: (BuildContext context,
-            QueryDocumentSnapshot<Map<String, dynamic>> document) {
-          return ItemSups(publicFData: document.data());
-        });
+    return Scaffold(
+      //appBar: AppBar(title: Text("Catalog")),
+      body: SafeArea(
+        child: Column(
+          children: [
+            CatalogProducts(),
+            ElevatedButton(
+              onPressed: () => Get.to(() => CartScreen()),
+              child: Text('Go to Cart'),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

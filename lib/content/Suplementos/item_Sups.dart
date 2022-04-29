@@ -38,20 +38,6 @@ class _ItemSupsState extends State<ItemSups> {
                     tooltip: "Compartir",
                     icon: Icon(Icons.share),
                     onPressed: () async {
-                      final urlImage = widget.publicFData["picture"];
-                      final url = Uri.parse(urlImage);
-                      final response = await http.get(url);
-                      final bytes = response.bodyBytes;
-
-                      final temp = await getTemporaryDirectory();
-                      final path = '${temp.path}/image.jpg';
-                      File(path).writeAsBytesSync(bytes);
-
-                      final date = widget.publicFData["publishedAt"].toDate();
-
-                      await Share.shareFiles([path],
-                          subject: widget.publicFData["title"],
-                          text: widget.publicFData["Descripcion"]);
                     },
                   ),
                 ],

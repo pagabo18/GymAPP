@@ -7,6 +7,7 @@ import 'package:foto_share/content/mis_fotos/bloc/misFotos_bloc.dart';
 import 'package:foto_share/home/home_Page.dart';
 import 'package:foto_share/auth/bloc/auth_bloc.dart';
 import 'package:foto_share/login/login_page.dart';
+import 'package:get/get.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +28,7 @@ void main() async {
           create: (context) => CreateBloc(),
         ),
       ],
-      child: MyApp(),
+      child: GetMaterialApp(home: MyApp()),
     ),
   );
 }
