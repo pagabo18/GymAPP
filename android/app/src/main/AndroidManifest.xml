@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="mx.iteso.foto_share">
    <application
-        android:label="Foto Share App"
+        android:label="GymApp"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

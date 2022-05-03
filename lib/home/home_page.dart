@@ -4,7 +4,7 @@ import 'package:foto_share/auth/bloc/auth_bloc.dart';
 import 'package:foto_share/content/agregar/add_form.dart';
 import 'package:foto_share/content/espera/en_espera.dart';
 import 'package:foto_share/content/RutinasDef/Rutinas_Def.dart';
-import 'package:foto_share/content/foru/fotosforu.dart';
+import 'package:foto_share/content/rutinas/rutinas.dart';
 import 'package:foto_share/content/Suplementos/Suplementos.dart';
 import 'package:foto_share/content/mis_fotos/mis_fotos.dart';
 
