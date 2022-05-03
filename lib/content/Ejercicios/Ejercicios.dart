@@ -10,10 +10,10 @@ class Ejercicios extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FirestoreListView(
-        query: FirebaseFirestore.instance.collection('gymEjercicioSelect'),
+        query: FirebaseFirestore.instance.collection('gymEjercicio'),
         itemBuilder: (BuildContext context,
             QueryDocumentSnapshot<Map<String, dynamic>> document) {
-          return ItemExercise(publicFData: document.data());
+          return ItemExercise(ejercicioData: document.data());
         });
   }
 }
