@@ -5,15 +5,18 @@ import 'package:path_provider/path_provider.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:http/http.dart' as http;
 
-class ItemPublic extends StatefulWidget {
-  final Map<String, dynamic> publicFData;
-  ItemPublic({Key? key, required this.publicFData}) : super(key: key);
+
+class ItemNutricion extends StatefulWidget {
+
+  final Map<String, dynamic> nutricionFData;
+
+  ItemNutricion({Key? key, required this.nutricionFData}) : super(key: key);
 
   @override
-  State<ItemPublic> createState() => _ItemPublicState();
+  State<ItemNutricion> createState() => _ItemNutricionState();
 }
 
-class _ItemPublicState extends State<ItemPublic> {
+class _ItemNutricionState extends State<ItemNutricion> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -25,20 +28,20 @@ class _ItemPublicState extends State<ItemPublic> {
             AspectRatio(
               aspectRatio: 16 / 9,
               child: Image.network(
-                "${widget.publicFData["imagen"]}",
+                "${widget.nutricionFData["imagen"]}",
                 fit: BoxFit.cover,
               ),
             ),
             ListTile(
-              title: Text("${widget.publicFData["nombre"]}"),
-              subtitle: Text("${widget.publicFData["descripcion"]}"),
+              title: Text("${widget.nutricionFData["nombre"]}"),
+              subtitle: Text("${widget.nutricionFData["descripcion"]}"),
               trailing: Wrap(
                 children: [
                   IconButton(
                     tooltip: "Compartir",
                     icon: Icon(Icons.share),
                     onPressed: () async {
-                      final urlImage = widget.publicFData["picture"];
+                      final urlImage = widget.nutricionFData["imagen"];
                       final url = Uri.parse(urlImage);
                       final response = await http.get(url);
                       final bytes = response.bodyBytes;
@@ -47,14 +50,11 @@ class _ItemPublicState extends State<ItemPublic> {
                       final path = '${temp.path}/image.jpg';
                       File(path).writeAsBytesSync(bytes);
 
-                      final date = widget.publicFData["publishedAt"].toDate();
-
                       await Share.shareFiles(
                         [path],
-                        subject: widget.publicFData["title"],
-                        text: widget.publicFData["publishedAt"]
-                            .toDate()
-                            .toString(),
+                        subject: widget.nutricionFData["title"],
+                        text: widget.nutricionFData["descripcion"]
+
                       );
                     },
                   ),

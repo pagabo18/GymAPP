@@ -4,6 +4,7 @@ import 'package:foto_share/auth/bloc/auth_bloc.dart';
 import 'package:foto_share/content/agregar/add_form.dart';
 import 'package:foto_share/content/espera/en_espera.dart';
 import 'package:foto_share/content/RutinasDef/Rutinas_Def.dart';
+import 'package:foto_share/content/nutricion/nutricion.dart';
 import 'package:foto_share/content/foru/fotosforu.dart';
 import 'package:foto_share/content/Suplementos/Suplementos.dart';
 import 'package:foto_share/content/mis_fotos/mis_fotos.dart';
@@ -18,19 +19,16 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _currentPageIndex = 2;
   final _pagesNameList = [
-    "Usuario",
+    "Nutricion",
     "Rutinas",
     "Suplementos",
     "editar",
     "MisRutinas",
-    "Global"
+    "Ejercicios"
   ];
   final _pagesList = [
-    Container(
-      child: Center(
-        child: Text("Usuario"),
-      ),
-    ),
+    
+    Nutricion(),
     FotosForU(),
     Suplementos(),
     AddForm(),
@@ -75,7 +73,7 @@ class _HomePageState extends State<HomePage> {
         items: [
           BottomNavigationBarItem(
             label: _pagesNameList[0],
-            icon: Icon(Icons.person_rounded),
+            icon: Icon(Icons.medication_liquid),
             backgroundColor: Colors.white,
           ),
           BottomNavigationBarItem(
@@ -96,7 +94,7 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             label: _pagesNameList[5],
-            icon: Icon(Icons.add_circle_outline_outlined),
+            icon: Icon(Icons.accessibility_new_rounded),
           ),
         ],
       ),
