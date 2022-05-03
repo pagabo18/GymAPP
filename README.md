@@ -52,3 +52,29 @@ crear vista de los ejercicios de las rutinas
 crear un editor de ejercicios
 crear tienda de productos 
 crear estructura de productos 
+
+
+usuario
+        sus rutinas 
+            0 YOGA
+                EJERCICIOS
+                    0.0
+                    0.1
+                    0.2
+            1 BRAZO
+                EJERCICIOS
+                    1.1
+                    1.2
+                    0.0
+            2
+            3
+            4
+
+    usuario
+        misfoto
+            0
+                datos
+                    imagen
+                    nombre
+                    fecha de creacion
+            1
