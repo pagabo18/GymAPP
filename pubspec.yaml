@@ -19,12 +19,13 @@ dependencies:
   equatable:
   flutter_shimmer:
   image_picker:
-  share_plus: ^4.0.3
-  share: ^2.0.4
+  share_plus:
+  share:
   http:
-  path_provider: ^2.0.9
+  path_provider: 
   expansion_card:
   get:
+  screenshot:
 
   # Firebase
   firebase_auth:

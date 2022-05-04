@@ -32,4 +32,5 @@ class Suplementos extends StatelessWidget {
       ),
     );
   }
+  
 }
