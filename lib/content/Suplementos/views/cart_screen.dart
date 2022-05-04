@@ -9,7 +9,16 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Your Cart")),
+      appBar: AppBar(
+        title: Text("Your Cart"),
+        flexibleSpace: Container(
+          height: 120,
+          decoration: BoxDecoration(
+            gradient:
+                LinearGradient(colors: [Colors.deepPurple, Colors.purple]),
+          ),
+        ),
+      ),
       body: Column(
         children: [
           CartProducts(),

@@ -26,6 +26,7 @@ class Suplementos extends StatelessWidget {
               onPressed: () => Get.to(() => CartScreen()),
               child: Text('Go to Cart'),
             ),
+            SizedBox(height: 24),
           ],
         ),
       ),
