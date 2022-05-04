@@ -6,6 +6,7 @@ import 'package:foto_share/content/Suplementos/catalog_products.dart';
 import 'package:foto_share/content/Suplementos/item_Sups.dart';
 import 'package:foto_share/content/Suplementos/views/cart_screen.dart';
 import 'package:get/get.dart';
+
 class Suplementos extends StatelessWidget {
   const Suplementos({Key? key}) : super(key: key);
 
@@ -18,6 +19,10 @@ class Suplementos extends StatelessWidget {
           children: [
             CatalogProducts(),
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                primary: Colors.deepPurple,
+              ),
               onPressed: () => Get.to(() => CartScreen()),
               child: Text('Go to Cart'),
             ),

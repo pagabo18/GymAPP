@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foto_share/auth/bloc/auth_bloc.dart';
+import 'package:foto_share/content/Ejercicios/Ejercicios.dart';
 import 'package:foto_share/content/agregar/add_form.dart';
 import 'package:foto_share/content/espera/en_espera.dart';
 import 'package:foto_share/content/RutinasDef/Rutinas_Def.dart';
@@ -18,7 +19,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _currentPageIndex = 2;
+  int _currentPageIndex = 1;
   final _pagesNameList = [
     "Nutricion",
     "Rutinas",
@@ -33,7 +34,7 @@ class _HomePageState extends State<HomePage> {
     Suplementos(),
     AddForm(),
     MisFotos(),
-    EnEspera(),
+    Ejercicios(),
   ];
   @override
   Widget build(BuildContext context) {

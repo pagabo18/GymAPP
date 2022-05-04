@@ -11,6 +11,8 @@ class CartController extends GetxController {
       _products[product] = 1;
     }
 
+
+
     Get.snackbar(
       "Product Added",
       "You have added the ${product.name} to the cart",
@@ -24,6 +26,9 @@ class CartController extends GetxController {
       _products.removeWhere((key, value) => key == product);
     } else {
       _products[product] -= 1;
+    }
+    if (_products[product] == 0) {
+      _products.removeWhere((key, value) => key == product);
     }
   }
 

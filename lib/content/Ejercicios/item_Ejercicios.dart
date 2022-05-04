@@ -21,19 +21,19 @@ class _ItemExerciseState extends State<ItemExercise> {
       padding: const EdgeInsets.all(18.0),
       child: GestureDetector(
         onTap: () {
-          print("${widget.ejercicioData["nombre"]}");
+          print("${widget.ejercicioData["titulo"]}");
 //
-          var _nombre = "${widget.ejercicioData["nombre"]}";
+          var _nombre = "${widget.ejercicioData["titulo"]}";
           var _descripcion = "${widget.ejercicioData["descripcion"]}";
           var _imagen = "${widget.ejercicioData["imagen"]}";
-          var _cuando = "${widget.ejercicioData["cuando"]}";
+          var _tipo = "${widget.ejercicioData["tipo"]}";
 
           Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => EjerciciosPage(ejercicio: {
-              "nombre": _nombre,
+              "titulo": _nombre,
               "descripcion": _descripcion,
               "imagen": _imagen,
-              "cuando": _cuando
+              "tipo": _tipo
             }),
           ));
         },
@@ -49,8 +49,7 @@ class _ItemExerciseState extends State<ItemExercise> {
                 ),
               ),
               ListTile(
-                title: Text("${widget.ejercicioData["nombre"]}"),
-                subtitle: Text("${widget.ejercicioData["tipo"]}"),
+                title: Text("${widget.ejercicioData["titulo"]}"),
                 trailing: Wrap(
                     children: [
                       IconButton(
@@ -68,7 +67,7 @@ class _ItemExerciseState extends State<ItemExercise> {
 
                           await Share.shareFiles(
                             [path],
-                            subject: widget.ejercicioData["nombre"],
+                            subject: widget.ejercicioData["titulo"],
                             text: widget.ejercicioData["descripcion"]
                           );
                         },
