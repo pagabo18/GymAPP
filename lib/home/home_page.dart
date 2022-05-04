@@ -23,12 +23,11 @@ class _HomePageState extends State<HomePage> {
     "Nutricion",
     "Rutinas",
     "Suplementos",
-    "editar",
+    "Agregar rutina",
     "MisRutinas",
     "Ejercicios"
   ];
   final _pagesList = [
-    
     Nutricion(),
     FotosForU(),
     Suplementos(),

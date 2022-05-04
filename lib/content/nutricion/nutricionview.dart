@@ -24,32 +24,34 @@ class _NutricionPageState extends State<NutricionPage> {
           ),
         ),
       ),
-      body: Container(
-        alignment: Alignment.center,
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Image.network("${widget.nutricion["imagen"]}"),
-            SizedBox(
-              height: 20,
-            ),
-            Container(
-              padding: EdgeInsets.all(20),
-              child: Text(
-                "${widget.nutricion["descripcion"]}",
-                style: TextStyle(fontSize: 18),
+      body: SingleChildScrollView(
+        child: Container(
+          alignment: Alignment.center,
+          height: MediaQuery.of(context).size.height,
+          width: MediaQuery.of(context).size.width,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Image.network("${widget.nutricion["imagen"]}"),
+              SizedBox(
+                height: 20,
               ),
-            ),
-            Container(
-              padding: EdgeInsets.all(20),
-              child: Text(
-                "${widget.nutricion["cuando"]}",
-                style: TextStyle(fontSize: 18),
+              Container(
+                padding: EdgeInsets.all(20),
+                child: Text(
+                  "${widget.nutricion["descripcion"]} ",
+                  style: TextStyle(fontSize: 18),
+                ),
               ),
-            ),
-          ],
+              Container(
+                padding: EdgeInsets.all(20),
+                child: Text(
+                  "Uso: ${widget.nutricion["cuando"]}",
+                  style: TextStyle(fontSize: 18),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

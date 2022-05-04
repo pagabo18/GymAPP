@@ -12,6 +12,9 @@ class AddForm extends StatefulWidget {
 
 class _AddFormState extends State<AddForm> {
   var _titleC = TextEditingController();
+  var _imageLink = TextEditingController();
+  var _description = TextEditingController();
+  var _subtitulo = TextEditingController();
   bool _defaultSwitchValue = false;
   File? image;
   @override
@@ -53,24 +56,53 @@ class _AddFormState extends State<AddForm> {
               : Container(),
           SizedBox(height: 24),
           MaterialButton(
-            child: Text("Foto"),
+            child: Text("Agregar una rutina"),
             onPressed: () {
-              // BLoC tomar  foto
-              BlocProvider.of<CreateBloc>(context)
-                  .add(OnCreateTakePictureEvent());
+              // // BLoC tomar  foto
+              // BlocProvider.of<CreateBloc>(context)
+              //     .add(OnCreateTakePictureEvent());
             },
           ),
           SizedBox(height: 24),
           TextField(
-            controller: _titleC,
-            decoration: InputDecoration(
-              label: Text("Title"),
-              border: OutlineInputBorder(),
-            ),
-          ),
+              maxLength: 30,
+              controller: _titleC,
+              decoration: InputDecoration(
+                focusColor: Colors.black,
+                label: Text("Title", style: TextStyle(color: Colors.black)),
+                border: OutlineInputBorder(),
+              )),
+          SizedBox(height: 24),
+          TextField(
+              controller: _subtitulo,
+              decoration: InputDecoration(
+                focusColor: Colors.black,
+                label: Text("Subtitulo", style: TextStyle(color: Colors.black)),
+                border: OutlineInputBorder(),
+              )),
+          SizedBox(height: 24),
+          TextField(
+              controller: _imageLink,
+              decoration: InputDecoration(
+                focusColor: Colors.black,
+                label: Text("Link to image",
+                    style: TextStyle(color: Colors.black)),
+                border: OutlineInputBorder(),
+              )),
+          SizedBox(height: 24),
+          TextField(
+              keyboardType: TextInputType.multiline,
+              maxLines: null,
+              controller: _description,
+              decoration: InputDecoration(
+                focusColor: Colors.black,
+                label:
+                    Text("Description", style: TextStyle(color: Colors.black)),
+                border: OutlineInputBorder(),
+              )),
           SizedBox(height: 24),
           SwitchListTile(
-            title: Text("Publicar"),
+            title: Text("Hacer publico"),
             value: _defaultSwitchValue,
             onChanged: (newValue) {
               _defaultSwitchValue = newValue;
