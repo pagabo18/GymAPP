@@ -17,16 +17,16 @@ class misFotosBloc extends Bloc<misFotosEvent, misFotosState> {
     try {
       // query para traer el documento con el id del usuario autenticado
       var queryUser = await FirebaseFirestore.instance
-          .collection("user")
+          .collection("gymUser")
           .doc("${FirebaseAuth.instance.currentUser!.uid}");
 
       // query para sacar la data del documento
       var docsRef = await queryUser.get();
-      var listIds = docsRef.data()?["fotosListId"];
+      var listIds = docsRef.data()?["rutinas"];
 
       // query para sacar documentos de fshare
       var queryFotos =
-          await FirebaseFirestore.instance.collection("fshare").get();
+          await FirebaseFirestore.instance.collection("gymRutinasDef").get();
 
       // query de Dart filtrando la info utilizando como referencia la lista de ids de docs del usuario actual
       var ListqueryFotos = queryFotos.docs

@@ -12,7 +12,6 @@ class _ItemEsperaState extends State<ItemEspera> {
   bool _switchValue = false;
   @override
   void initState() {
-    _switchValue = widget.nonPublicFData["public"];
     super.initState();
   }
 
@@ -27,37 +26,19 @@ class _ItemEsperaState extends State<ItemEspera> {
             AspectRatio(
               aspectRatio: 16 / 9,
               child: Image.network(
-                "${widget.nonPublicFData["picture"]}",
+                "${widget.nonPublicFData["imagen"]}",
                 fit: BoxFit.cover,
               ),
             ),
             SwitchListTile(
-              title: Text("${widget.nonPublicFData["title"]}"),
-              subtitle:
-                  Text("${widget.nonPublicFData["publishedAt"].toDate()}"),
+              title: Text("${widget.nonPublicFData["nombre"]}"),
+              subtitle: Text("${widget.nonPublicFData["subtitulo"]}"),
               value: _switchValue,
-              onChanged: (newVal) {
+              onChanged: (value) {
                 setState(() {
-                  _switchValue = newVal;
+                  _switchValue = value;
                 });
               },
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                FlatButton(
-                  child: Text("${widget.nonPublicFData["public"]}"),
-                  onPressed: () {
-                    // editDialog(
-                    //     widget.nonPublicFData['title'],
-                    //     widget.nonPublicFData['description'],
-                    //     widget.nonPublicFData['public'],
-                    //     widget.nonPublicFData['id']);
-                    // Navigator.of(context).push(value: widget.nonPublicFData['id']);
-                  },
-                ),
-                MaterialButton(child: Icon(Icons.star), onPressed: () {}),
-              ],
             ),
           ],
         ),
@@ -65,37 +46,37 @@ class _ItemEsperaState extends State<ItemEspera> {
     );
   }
 
-  Future editDialog(
-          String title, String description, bool publico, String uid) =>
-      showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-          title: Text("Editar"),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              TextField(
-                decoration: InputDecoration(
-                  labelText: "Título",
-                ),
-              ),
-              TextField(
-                decoration: InputDecoration(
-                  labelText: "Descripción",
-                ),
-              ),
-            ],
-          ),
-          actions: [
-            FlatButton(
-              child: Text("Cancelar"),
-              onPressed: () => Navigator.of(context).pop(),
-            ),
-            FlatButton(
-              child: Text("Aceptar"),
-              onPressed: () => Navigator.of(context).pop(),
-            ),
-          ],
-        ),
-      );
+  // Future editDialog(
+  //         String title, String description, bool publico, String uid) =>
+  //     showDialog(
+  //       context: context,
+  //       builder: (context) => AlertDialog(
+  //         title: Text("Editar"),
+  //         content: Column(
+  //           mainAxisSize: MainAxisSize.min,
+  //           children: [
+  //             TextField(
+  //               decoration: InputDecoration(
+  //                 labelText: "Título",
+  //               ),
+  //             ),
+  //             TextField(
+  //               decoration: InputDecoration(
+  //                 labelText: "Descripción",
+  //               ),
+  //             ),
+  //           ],
+  //         ),
+  //         actions: [
+  //           FlatButton(
+  //             child: Text("Cancelar"),
+  //             onPressed: () => Navigator.of(context).pop(),
+  //           ),
+  //           FlatButton(
+  //             child: Text("Aceptar"),
+  //             onPressed: () => Navigator.of(context).pop(),
+  //           ),
+  //         ],
+  //       ),
+  //     );
 }
