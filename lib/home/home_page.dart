@@ -19,7 +19,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _currentPageIndex = 1;
+  int _currentPageIndex = 3;
   final _pagesNameList = [
     "Nutricion",
     "Rutinas",
