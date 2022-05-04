@@ -59,7 +59,7 @@ class _ItemNutricionState extends State<ItemNutricion> {
                         tooltip: "Compartir",
                         icon: Icon(Icons.share),
                         onPressed: () async {
-                          final urlImage = widget.nutricionFData["picture"];
+                          final urlImage = widget.nutricionFData["imagen"];
                           final url = Uri.parse(urlImage);
                           final response = await http.get(url);
                           final bytes = response.bodyBytes;

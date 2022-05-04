@@ -19,12 +19,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _currentPageIndex = 3;
+  int _currentPageIndex = 1;
   final _pagesNameList = [
     "Nutricion",
     "Rutinas",
-    "Suplementos",
-    "Agregar rutina",
+    "Tienda",
+    "Agregar",
     "MisRutinas",
     "Ejercicios"
   ];
@@ -83,7 +83,7 @@ class _HomePageState extends State<HomePage> {
           ),
           BottomNavigationBarItem(
             label: _pagesNameList[2],
-            icon: Icon(Icons.fastfood_rounded),
+            icon: Icon(Icons.local_grocery_store_rounded),
           ),
           BottomNavigationBarItem(
             label: _pagesNameList[3],

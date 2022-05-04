@@ -50,30 +50,29 @@ class _ItemExerciseState extends State<ItemExercise> {
               ),
               ListTile(
                 title: Text("${widget.ejercicioData["titulo"]}"),
+                subtitle: Text("${widget.ejercicioData["tipo"]}"),
                 trailing: Wrap(
-                    children: [
-                      IconButton(
-                        tooltip: "Compartir",
-                        icon: Icon(Icons.share),
-                        onPressed: () async {
-                          final urlImage = widget.ejercicioData["picture"];
-                          final url = Uri.parse(urlImage);
-                          final response = await http.get(url);
-                          final bytes = response.bodyBytes;
+                  children: [
+                    IconButton(
+                      tooltip: "Compartir",
+                      icon: Icon(Icons.share),
+                      onPressed: () async {
+                        final urlImage = widget.ejercicioData["picture"];
+                        final url = Uri.parse(urlImage);
+                        final response = await http.get(url);
+                        final bytes = response.bodyBytes;
 
-                          final temp = await getTemporaryDirectory();
-                          final path = '${temp.path}/image.jpg';
-                          File(path).writeAsBytesSync(bytes);
+                        final temp = await getTemporaryDirectory();
+                        final path = '${temp.path}/image.jpg';
+                        File(path).writeAsBytesSync(bytes);
 
-                          await Share.shareFiles(
-                            [path],
+                        await Share.shareFiles([path],
                             subject: widget.ejercicioData["titulo"],
-                            text: widget.ejercicioData["descripcion"]
-                          );
-                        },
-                      ),
-                    ],
+                            text: widget.ejercicioData["descripcion"]);
+                      },
                     ),
+                  ],
+                ),
               ),
             ],
           ),

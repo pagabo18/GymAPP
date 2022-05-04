@@ -28,17 +28,18 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
     try {
       String _imageUrl = await _uploadPictureToStorage();
       if (_imageUrl != "") {
-        dataToSave["picture"] = _imageUrl;
-        dataToSave["publishedAt"] = Timestamp.fromDate(DateTime.now());
-        dataToSave["stars"] = 0;
-        dataToSave["username"] = FirebaseAuth.instance.currentUser!.displayName;
-      } else {
+        dataToSave["imagen"] = _imageUrl;
+        dataToSave["nombre"] = dataToSave["nombre"];
+        dataToSave["subtitulo"] = dataToSave["subtitulo"];
+        dataToSave["descripcion"] = dataToSave["descripcion"];
+        dataToSave["ejercicios"] = dataToSave["ejercicios"];
         return false;
       }
 
       // Guardar Fshare en cloud Firestore
-      var docRef =
-          await FirebaseFirestore.instance.collection("fshare").add(dataToSave);
+      var docRef = await FirebaseFirestore.instance
+          .collection("gymRutinasDef")
+          .add(dataToSave);
       // Actualizar lista de fotoShare en collections users
       return await _updateUserDocumentrReference(docRef.id);
     } catch (e) {
@@ -56,13 +57,13 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
 
       // definir upload task
       UploadTask task = FirebaseStorage.instance
-          .ref("fshare/imagen_${stamp}.png")
+          .ref("gymRutinas/imagen_${stamp}.png")
           .putFile(_selectedPicture!);
       // ejecutar la tasks
       await task;
       // Recuperar la Url del archivo
       return await task.storage
-          .ref("fshare/imagen_${stamp}.png")
+          .ref("gymRutinas/imagen_${stamp}.png")
           .getDownloadURL();
     } catch (e) {
       return "";
@@ -73,21 +74,21 @@ class CreateBloc extends Bloc<CreateEvent, CreateState> {
     try {
       // query para traer el documento con el id del usuario autenticado
       var queryUser = await FirebaseFirestore.instance
-          .collection("user")
+          .collection("gymUser")
           .doc("${FirebaseAuth.instance.currentUser!.uid}");
 
       // query para sacar la data del documento
       var docsRef = await queryUser.get();
-      List<dynamic> listIds = docsRef.data()?["fotosListId"];
+      List<dynamic> listIds = docsRef.data()?["rutinas"];
 
       // Agregamos nuevo ID
       listIds.add(fshareId);
 
       // Guardar
-      await queryUser.update({"fotosListId": listIds});
+      await queryUser.update({"rutinas": listIds});
       return true;
     } catch (e) {
-      print("Error al actualizar Users Collection: $e");
+      print("Error al actualizar rutinas Collection: $e");
       return false;
     }
   }
