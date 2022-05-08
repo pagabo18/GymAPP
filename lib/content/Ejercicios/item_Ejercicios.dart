@@ -57,7 +57,7 @@ class _ItemExerciseState extends State<ItemExercise> {
                       tooltip: "Compartir",
                       icon: Icon(Icons.share),
                       onPressed: () async {
-                        final urlImage = widget.ejercicioData["picture"];
+                        final urlImage = widget.ejercicioData["imagen"];
                         final url = Uri.parse(urlImage);
                         final response = await http.get(url);
                         final bytes = response.bodyBytes;
