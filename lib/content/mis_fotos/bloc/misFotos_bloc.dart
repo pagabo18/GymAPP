@@ -6,7 +6,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 part 'misFotos_event.dart';
 part 'misFotos_state.dart';
 
-
 class misFotosBloc extends Bloc<misFotosEvent, misFotosState> {
   misFotosBloc() : super(misFotosInitial()) {
     on<GetAllMyFotosEvent>(_getMyContent);
@@ -30,10 +29,11 @@ class misFotosBloc extends Bloc<misFotosEvent, misFotosState> {
 
       // query de Dart filtrando la info utilizando como referencia la lista de ids de docs del usuario actual
       var ListqueryFotos = queryFotos.docs
-          .where((doc) =>
-            listIds.contains(doc.id) )
+          .where((doc) => listIds.contains(doc.id))
           .map((doc) => doc.data().cast<String, dynamic>())
           .toList();
+
+      print("List of query fotos: ${ListqueryFotos}");
 
       // lista de documentos filtrados del usuario con sus datos de fotos en espera
       emit(misFotosFotosSuccessState(myEnableData: ListqueryFotos));

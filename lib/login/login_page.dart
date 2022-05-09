@@ -59,7 +59,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     SizedBox(height: 150),
                     Text(
-                      "Log in using a social media account",
+                      "Accede con tu cuenta de Google",
                       style: GoogleFonts.lato(
                         textStyle: TextStyle(
                           color: Colors.white,
