@@ -126,6 +126,119 @@
 //   }
 // }
 
+// import 'dart:io';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_bloc/flutter_bloc.dart';
+// import 'package:foto_share/content/agregar/bloc/create_bloc.dart';
+
+// class AddForm extends StatefulWidget {
+//   AddForm({Key? key}) : super(key: key);
+
+//   @override
+//   State<AddForm> createState() => _AddFormState();
+// }
+
+// class _AddFormState extends State<AddForm> {
+//   var _titleC = TextEditingController();
+//   var _description = TextEditingController();
+//   var _subtitulo = TextEditingController();
+//   var _ejercicios = [];
+
+//   File? image;
+//   @override
+//   Widget build(BuildContext context) {
+//     return BlocConsumer<CreateBloc, CreateState>(listener: (context, state) {
+//       if (state is CreatePictureErrorState) {
+//         ScaffoldMessenger.of(context).showSnackBar(
+//           SnackBar(
+//             content: Text("Error al elegir imagen valida"),
+//           ),
+//         );
+//       } else if (state is CreateFshareErrorState) {
+//         ScaffoldMessenger.of(context).showSnackBar(
+//           SnackBar(
+//             content: Text("Error al guardar en la base"),
+//           ),
+//         );
+//       } else if (state is CreateSuccessState) {
+//         _titleC.clear();
+//         _description.clear();
+//         _subtitulo.clear();
+//         _ejercicios.clear();
+//         image = null;
+//         ScaffoldMessenger.of(context).showSnackBar(
+//           SnackBar(
+//             content: Text("Guardado exitosamente..."),
+//           ),
+//         );
+//       } else if (state is CreatePictureChangedState) {
+//         image = state.picture;
+//       }
+//     }, builder: (context, state) {
+//       return Padding(
+//         padding: const EdgeInsets.symmetric(horizontal: 24),
+//         child: ListView(children: [
+//           image != null
+//               ? Image.file(
+//                   image!,
+//                   height: 120,
+//                 )
+//               : Container(),
+//           SizedBox(height: 24),
+//           MaterialButton(
+//             child: Text("Foto"),
+//             onPressed: () {
+//               // BLoC tomar  foto
+//               BlocProvider.of<CreateBloc>(context)
+//                   .add(OnCreateTakePictureEvent());
+//             },
+//           ),
+//           SizedBox(height: 24),
+//           TextField(
+//             controller: _titleC,
+//             decoration: InputDecoration(
+//               label: Text("Title"),
+//               border: OutlineInputBorder(),
+//             ),
+//           ),
+//           SizedBox(height: 24),
+//           TextField(
+//             controller: _description,
+//             decoration: InputDecoration(
+//               label: Text("Descripcion"),
+//               border: OutlineInputBorder(),
+//             ),
+//           ),
+//           SizedBox(height: 24),
+//           TextField(
+//             controller: _subtitulo,
+//             decoration: InputDecoration(
+//               label: Text("Subtitulo"),
+//               border: OutlineInputBorder(),
+//             ),
+//           ),
+//           SizedBox(height: 24),
+//           MaterialButton(
+//             child: Text("Guardar"),
+//             onPressed: () {
+//               Map<String, dynamic> fshareData = {};
+//               fshareData = {
+//                 "image": image,
+//                 "titulo": _titleC.value.text,
+//                 "descripcion": _description.value.text,
+//                 "subtitulo": _subtitulo.value.text,
+//                 "ejercicios": [],
+//               };
+//               BlocProvider.of<CreateBloc>(context)
+//                   .add(OnCreateSaveDataEvent(dataToSave: fshareData));
+//             },
+//           ),
+//         ]),
+//       );
+//     });
+//   }
+// }
+
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -139,10 +252,9 @@ class AddForm extends StatefulWidget {
 }
 
 class _AddFormState extends State<AddForm> {
-  var _titleC = TextEditingController();
-  var _description = TextEditingController();
   var _subtitulo = TextEditingController();
-  var _ejercicios = [];
+  var _description = TextEditingController();
+  var _nombre = TextEditingController();
 
   File? image;
   @override
@@ -157,14 +269,13 @@ class _AddFormState extends State<AddForm> {
       } else if (state is CreateFshareErrorState) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text("Error al guardar en la base"),
+            content: Text("Error al guardar Fshare"),
           ),
         );
       } else if (state is CreateSuccessState) {
-        _titleC.clear();
+        _nombre.clear();
         _description.clear();
         _subtitulo.clear();
-        _ejercicios.clear();
         image = null;
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -195,9 +306,9 @@ class _AddFormState extends State<AddForm> {
           ),
           SizedBox(height: 24),
           TextField(
-            controller: _titleC,
+            controller: _nombre,
             decoration: InputDecoration(
-              label: Text("Title"),
+              label: Text("Nombre"),
               border: OutlineInputBorder(),
             ),
           ),
@@ -205,7 +316,7 @@ class _AddFormState extends State<AddForm> {
           TextField(
             controller: _description,
             decoration: InputDecoration(
-              label: Text("Descripcion"),
+              label: Text("descripcion"),
               border: OutlineInputBorder(),
             ),
           ),
@@ -213,7 +324,7 @@ class _AddFormState extends State<AddForm> {
           TextField(
             controller: _subtitulo,
             decoration: InputDecoration(
-              label: Text("Subtitulo"),
+              label: Text("subtitulo"),
               border: OutlineInputBorder(),
             ),
           ),
@@ -223,10 +334,10 @@ class _AddFormState extends State<AddForm> {
             onPressed: () {
               Map<String, dynamic> fshareData = {};
               fshareData = {
-                "titulo": _titleC.value.text,
+                "nombre": _nombre.value.text,
                 "descripcion": _description.value.text,
                 "subtitulo": _subtitulo.value.text,
-                "ejercicios": [],
+                "ejercicios": ["1ktApH0YFtIT09dIG40z", "LgfWvfVnRWPB4wYGZMyU"],
               };
               BlocProvider.of<CreateBloc>(context)
                   .add(OnCreateSaveDataEvent(dataToSave: fshareData));

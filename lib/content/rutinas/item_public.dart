@@ -21,17 +21,17 @@ class _ItemPublicState extends State<ItemPublic> {
       padding: const EdgeInsets.all(18.0),
       child: GestureDetector(
         onTap: () {
-          print("${widget.publicFData["nombre"]}");
-//
+// get the document id from the map
           var _nombre = "${widget.publicFData["nombre"]}";
           var _descripcion = "${widget.publicFData["descripcion"]}";
           var _imagen = "${widget.publicFData["imagen"]}";
+          
 
           Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => RutinaPage(rutina: {
               "nombre": _nombre,
               "descripcion": _descripcion,
-              "imagen": _imagen
+              "imagen": _imagen,
             }),
           ));
         },

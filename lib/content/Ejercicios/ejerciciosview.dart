@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:foto_share/content/Ejercicios/Ejercicios.dart';
 
 class EjerciciosPage extends StatefulWidget {
+ //create a filter for the list of exercises
+  
+  
   final ejercicio;
   EjerciciosPage({Key? key, this.ejercicio}) : super(key: key);
 
@@ -9,7 +12,10 @@ class EjerciciosPage extends StatefulWidget {
   State<EjerciciosPage> createState() => _EjerciciosPageState();
 }
 
+
+
 class _EjerciciosPageState extends State<EjerciciosPage> {
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
