@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class RutinaPage extends StatefulWidget {
@@ -41,6 +42,9 @@ class _RutinaPageState extends State<RutinaPage> {
                 style: TextStyle(fontSize: 18),
               ),
             ),
+            //create a listview with the exercises array of the rutina
+            
+            
           ],
         ),
       ),

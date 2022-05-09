@@ -17,3 +17,34 @@ class Ejercicios extends StatelessWidget {
         });
   }
 }
+
+// FirestoreListView(
+//         query: FirebaseFirestore.instance.collection('gymEjercicio'),
+//         itemBuilder: (BuildContext context,
+//             QueryDocumentSnapshot<Map<String, dynamic>> document) {
+//           return ItemExercise(ejercicioData: document.data());
+//         });
+
+          // DropdownButton(
+          //   value: selected,
+          //   items: [
+          //     DropdownMenuItem(
+          //       child: Text("yoga"),
+          //       value: "yoga",
+          //     ),
+          //     DropdownMenuItem(
+          //       child: Text("Pecho"),
+          //       value: "Pecho",
+          //     ),
+          //     DropdownMenuItem(
+          //       child: Text("Biceps"),
+          //       value: "Bicep",
+          //     ),
+          //   ],
+          //   onChanged: (Object? value) {
+          //     setState(() {
+          //       // //add the value to the selected list
+          //       selected = value.toString();
+          //     });
+          //   },
+          // ),
