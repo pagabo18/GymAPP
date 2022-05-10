@@ -30,15 +30,10 @@ class _ItemEsperaState extends State<ItemEspera> {
                 fit: BoxFit.cover,
               ),
             ),
-            SwitchListTile(
+            ListTile(
               title: Text("${widget.nonPublicFData["nombre"]}"),
               subtitle: Text("${widget.nonPublicFData["subtitulo"]}"),
-              value: _switchValue,
-              onChanged: (value) {
-                setState(() {
-                  _switchValue = value;
-                });
-              },
+             
             ),
           ],
         ),

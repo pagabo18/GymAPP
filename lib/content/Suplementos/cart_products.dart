@@ -12,19 +12,22 @@ class CartProducts extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(
       () => SizedBox(
-        height: 600,
-        child: ListView.builder(
-          itemCount: controller.products.length,
-          itemBuilder: (BuildContext context, int index){
-            return CartProductCard(
-              controller: controller,
-              product:controller.products.keys.toList()[index],
-              quantity: controller.products.values.toList()[index],
-              index: index,
-            );
-          }
-        )
-      ),
+          height: 600,
+          child: ListView.builder(
+              itemCount: controller.products.length,
+              itemBuilder: (BuildContext context, int index) {
+                //if product dont exist, show no tiene productos
+                if (controller.products == null) {
+                  return Center(child: Text('No tienes productos'));
+                } else {
+                  return CartProductCard(
+                    controller: controller,
+                    product: controller.products.keys.toList()[index],
+                    quantity: controller.products.values.toList()[index],
+                    index: index,
+                  );
+                }
+              })),
     );
   }
 }
@@ -46,40 +49,37 @@ class CartProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(
-        horizontal: 20.0,
-        vertical: 10,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          CircleAvatar(
-            radius: 40,
-            backgroundImage: NetworkImage(
-              product.imageUrl,
-
+        padding: const EdgeInsets.symmetric(
+          horizontal: 20.0,
+          vertical: 10,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            CircleAvatar(
+              radius: 40,
+              backgroundImage: NetworkImage(
+                product.imageUrl,
+              ),
             ),
-          ),
-          SizedBox(width: 20),
-          Expanded(
-            child: Text(product.name),
-          ),
-          IconButton(
-            onPressed: (){
-              controller.removeProduct(product);
-            }, 
-            icon: Icon(Icons.remove_circle),
-          ),
-          Text('${quantity}'),
-          IconButton(
-            onPressed: (){
-              controller.addProduct(product);
-            }, 
-            icon: Icon(Icons.add_circle),
-          ),
-        ],
-      )
-
-    );
+            SizedBox(width: 20),
+            Expanded(
+              child: Text(product.name),
+            ),
+            IconButton(
+              onPressed: () {
+                controller.removeProduct(product);
+              },
+              icon: Icon(Icons.remove_circle),
+            ),
+            Text('${quantity}'),
+            IconButton(
+              onPressed: () {
+                controller.addProduct(product);
+              },
+              icon: Icon(Icons.add_circle),
+            ),
+          ],
+        ));
   }
 }

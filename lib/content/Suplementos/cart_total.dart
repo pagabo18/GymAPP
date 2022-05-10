@@ -9,23 +9,36 @@ class CartTotal extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(
-      ()=>Container(
+      () => Container(
         padding: const EdgeInsets.symmetric(horizontal: 75),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(
-              'Total',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight:FontWeight.bold,
-              ),
-            ),
+            controller.total == 0
+                ? Container(
+                    child: Row(children: [
+                    Text(
+                      'No tiene productos',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ]))
+                : Text(
+                    'Total',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+            //if total dont exist, show 0
+
             Text(
               '${controller.total}',
               style: TextStyle(
                 fontSize: 24,
-                fontWeight:FontWeight.bold,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ],
