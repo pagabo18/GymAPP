@@ -30,6 +30,10 @@ class CartController extends GetxController {
     if (_products[product] == 0) {
       _products.removeWhere((key, value) => key == product);
     }
+    if(_products[product].length == 0){
+      //show a text that say no tiene productos
+      
+    }
   }
 
   get products => _products;

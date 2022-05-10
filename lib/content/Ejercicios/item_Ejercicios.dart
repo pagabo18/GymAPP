@@ -26,7 +26,8 @@ class _ItemExerciseState extends State<ItemExercise> {
     return SingleChildScrollView(
       child: Column(
         children: [
-          
+
+
           if (widget.ejercicioData["tipo"] == widget.selected) ...[
             Padding(
               padding: const EdgeInsets.all(18.0),

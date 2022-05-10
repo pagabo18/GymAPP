@@ -44,13 +44,11 @@ class lista extends StatefulWidget {
 }
 
 class _listaState extends State<lista> {
-  
   var selected = "Yoga";
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-
-      child: Column(        
+      child: Column(
         children: [
           DropdownButton(
             value: selected,
@@ -75,6 +73,10 @@ class _listaState extends State<lista> {
                 child: Text("Estiramiento"),
                 value: "Estiramiento",
               ),
+              DropdownMenuItem(
+                child: Text("Espalda"),
+                value: "Espalda",
+              ),
             ],
             onChanged: (Object? value) {
               setState(() {
@@ -83,16 +85,19 @@ class _listaState extends State<lista> {
               });
             },
           ),
-          FirestoreListView(
-            shrinkWrap: true, 
-              query: FirebaseFirestore.instance.collection('gymEjercicio'),
-              itemBuilder: (BuildContext context,
-                  QueryDocumentSnapshot<Map<String, dynamic>> document) {
-                return ItemExercise(
-                  ejercicioData: document.data(),
-                  selected: selected,
-                );
-              })
+          Container(
+            child: FirestoreListView(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                query: FirebaseFirestore.instance.collection('gymEjercicio'),
+                itemBuilder: (BuildContext context,
+                    QueryDocumentSnapshot<Map<String, dynamic>> document) {
+                  return ItemExercise(
+                    ejercicioData: document.data(),
+                    selected: selected,
+                  );
+                }),
+          )
         ],
       ),
     );
