@@ -31,7 +31,7 @@ class CartController extends GetxController {
       "Product Added",
       "You have added the ${product.name} to the cart",
       snackPosition: SnackPosition.BOTTOM,
-      duration: Duration(seconds: 2),
+      duration: Duration(seconds: 1),
     );
   }
 
@@ -44,7 +44,13 @@ class CartController extends GetxController {
     if (_products[product] == 0) {
       _products.removeWhere((key, value) => key == product);
     }
+    Get.snackbar(
+      "Product Removed",
+      "You have removed the ${product.name} from the cart",
+      snackPosition: SnackPosition.BOTTOM,
+      duration: Duration(seconds: 1),
+    );
   }
-
+  
   
 }

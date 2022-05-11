@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class UserAuthRepository {
-  final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ["email"]);
+  static final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ["email"]);
   final FirebaseAuth _auth = FirebaseAuth.instance;
   bool isAlreadyAuthenticated() {
     return _auth.currentUser != null;
@@ -16,7 +16,16 @@ class UserAuthRepository {
   Future<void> signOutFirebaseUser() async {
     await _auth.signOut();
   }
-
+  static Future<GoogleSignInAccount?> signIn() async{
+    final googleUser = await _googleSignIn.signIn();
+    return googleUser;
+  }
+  static Future<GoogleSignInAuthentication> authU() async{
+    final googleUser = await _googleSignIn.signIn();
+    final googleAuth = await googleUser!.authentication;
+    return googleAuth;
+  }
+  
   Future<void> signInWithGoogle() async {
     //Google Sign In
     final googleUser = await _googleSignIn.signIn();

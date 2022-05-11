@@ -26,6 +26,7 @@ dependencies:
   expansion_card:
   get:
   screenshot:
+  mailer:
 
   # Firebase
   firebase_auth:
