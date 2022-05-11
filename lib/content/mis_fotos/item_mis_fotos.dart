@@ -1,4 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../rutinas/rutinaview.dart';
+import 'bloc/misFotos_bloc.dart';
 
 class ItemEspera extends StatefulWidget {
   final Map<String, dynamic> nonPublicFData;
@@ -25,9 +30,53 @@ class _ItemEsperaState extends State<ItemEspera> {
           children: [
             AspectRatio(
               aspectRatio: 16 / 9,
-              child: Image.network(
-                "${widget.nonPublicFData["imagen"]}",
-                fit: BoxFit.cover,
+              child: GestureDetector(
+                onTap: () async {
+                  var _nombre = "${widget.nonPublicFData["nombre"]}";
+                  var _descripcion = "${widget.nonPublicFData["descripcion"]}";
+                  var _imagen = "${widget.nonPublicFData["imagen"]}";
+                  //print("$_nombre $_descripcion $_imagen");
+                  var _rutinaEjers = widget.nonPublicFData["ejercicios"];
+                  //print("ejercicios en la rutina: $_rutinaEjers");
+                  List<dynamic> _exercises = [];
+                  //obtain the exercises from the database
+
+                  var _collection =
+                      FirebaseFirestore.instance.collection("gymEjercicio");
+                  var _ejercicios = await _collection.get();
+                  //print("numero de ejercicios: ${_ejercicios.docs.length}");
+                  //add the exercises to the list
+                  for (var item in _rutinaEjers) {
+                    //print("checking for item: $item");
+                    for (var query in _ejercicios.docs) {
+                      //print("checking for query: ${query.id}");
+
+                      if (query.id == item) {
+                        _exercises.add(query.data());
+                      }
+                    }
+                  }
+//          print("ejercicios en la rutina: ${_exercises}");
+
+                  // for (var query in _ejercicios.docs) {
+                  //   Map<String, dynamic> data = query.data();
+                  //   print("data in ${query.id}: $data");
+
+                  // }
+
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => RutinaPage(rutina: {
+                      "nombre": _nombre,
+                      "descripcion": _descripcion,
+                      "imagen": _imagen,
+                      "ejercicios": _exercises,
+                    }),
+                  ));
+                },
+                child: Image.network(
+                  "${widget.nonPublicFData["imagen"]}",
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             ListTile(
@@ -63,6 +112,12 @@ class _ItemEsperaState extends State<ItemEspera> {
                                       onPressed: () {
                                         //delete the item
                                         Navigator.of(context).pop();
+                                        BlocProvider.of<misFotosBloc>(context)
+                                            .add(
+                                          DestroyRoutineEvent(
+                                              nombre: widget
+                                                  .nonPublicFData["nombre"]),
+                                        );
                                       })
                                 ]);
                           });

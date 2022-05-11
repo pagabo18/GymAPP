@@ -8,3 +8,11 @@ abstract class misFotosEvent extends Equatable {
 }
 
 class GetAllMyFotosEvent extends misFotosEvent {}
+
+class DestroyRoutineEvent extends misFotosEvent {
+  final String nombre;
+
+  DestroyRoutineEvent({required this.nombre});
+  @override
+  List<Object> get props => [nombre];
+}

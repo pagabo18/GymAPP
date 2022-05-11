@@ -18,6 +18,10 @@ class misFotosFotosSuccessState extends misFotosState {
   List<Object> get props => [myEnableData];
 }
 
+class misFotosFotosDeletingState extends misFotosState {}
+
+class misFotosFotosDeleteSuccessState extends misFotosState {}
+
 class misFotosFotosErrorState extends misFotosState {}
 
 class misFotosFotosEmptyState extends misFotosState {}

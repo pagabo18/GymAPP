@@ -9,6 +9,51 @@ part 'misFotos_state.dart';
 class misFotosBloc extends Bloc<misFotosEvent, misFotosState> {
   misFotosBloc() : super(misFotosInitial()) {
     on<GetAllMyFotosEvent>(_getMyContent);
+    on<DestroyRoutineEvent>(_destroyRoutine);
+  }
+
+  Future<void> _destroyRoutine(DestroyRoutineEvent event, emit) async {
+    //emit(misFotosFotosDeletingState());
+    print("event name: ${event.nombre}");
+    //get id of document with name event.nombre
+
+    DocumentReference<Map<String, dynamic>> userCollection =
+        await FirebaseFirestore.instance
+            .collection('gymUser')
+            .doc(FirebaseAuth.instance.currentUser!.uid);
+
+    var id = await FirebaseFirestore.instance
+        .collection("gymRutinasDef")
+        .where("nombre", isEqualTo: event.nombre)
+        .get()
+        .then((value) => value.docs[0].id);
+    print("id: $id");
+
+    //delete document from firebase collection "gymRutinasDef"
+    await FirebaseFirestore.instance
+        .collection("gymRutinasDef")
+        .doc(id)
+        .delete();
+
+    //delete string with same id from array 'rutinas' in collection 'users'
+
+    Map<String, dynamic>? collection = (await userCollection.get()).data();
+
+    List<dynamic> routines = collection!['rutinas'];
+
+    //print("rutinas: $routines");
+
+    routines.remove(id);
+
+    //print("rutinas: $routines");
+
+    await userCollection.update(<String, dynamic>{'rutinas': routines});
+
+    // await FirebaseFirestore.instance
+    //     .collection("gymUser")
+    //     .doc(FirebaseAuth.instance.currentUser!.uid)
+    //     .update({"rutinas": FieldValue.arrayRemove(id)});
+    emit(misFotosFotosDeleteSuccessState());
   }
 
   FutureOr<void> _getMyContent(event, emit) async {

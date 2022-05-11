@@ -80,34 +80,34 @@ class _ItemPublicState extends State<ItemPublic> {
               ListTile(
                 title: Text("${widget.publicFData["nombre"]}"),
                 subtitle: Text("${widget.publicFData["subtitulo"]}"),
-                trailing: Wrap(
-                    // children: [
-                    //   IconButton(
-                    //     tooltip: "Compartir",
-                    //     icon: Icon(Icons.share),
-                    //     onPressed: () async {
-                    //       final urlImage = widget.publicFData["picture"];
-                    //       final url = Uri.parse(urlImage);
-                    //       final response = await http.get(url);
-                    //       final bytes = response.bodyBytes;
+                //trailing: Wrap(
+                // children: [
+                //   IconButton(
+                //     tooltip: "Compartir",
+                //     icon: Icon(Icons.share),
+                //     onPressed: () async {
+                //       final urlImage = widget.publicFData["picture"];
+                //       final url = Uri.parse(urlImage);
+                //       final response = await http.get(url);
+                //       final bytes = response.bodyBytes;
 
-                    //       final temp = await getTemporaryDirectory();
-                    //       final path = '${temp.path}/image.jpg';
-                    //       File(path).writeAsBytesSync(bytes);
+                //       final temp = await getTemporaryDirectory();
+                //       final path = '${temp.path}/image.jpg';
+                //       File(path).writeAsBytesSync(bytes);
 
-                    //       final date = widget.publicFData["publishedAt"].toDate();
+                //       final date = widget.publicFData["publishedAt"].toDate();
 
-                    //       await Share.shareFiles(
-                    //         [path],
-                    //         subject: widget.publicFData["title"],
-                    //         text: widget.publicFData["publishedAt"]
-                    //             .toDate()
-                    //             .toString(),
-                    //       );
-                    //     },
-                    //   ),
-                    // ],
-                    ),
+                //       await Share.shareFiles(
+                //         [path],
+                //         subject: widget.publicFData["title"],
+                //         text: widget.publicFData["publishedAt"]
+                //             .toDate()
+                //             .toString(),
+                //       );
+                //     },
+                //   ),
+                // ],
+                //),
               ),
             ],
           ),

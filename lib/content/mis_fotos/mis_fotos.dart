@@ -17,6 +17,8 @@ class MisFotos extends StatelessWidget {
 
         } else if (state is misFotosFotosLoadingState) {
           print("Hello! misFotosFotosLoadingState has been loaded! loading");
+        } else if (state is misFotosFotosDeleteSuccessState) {
+          BlocProvider.of<misFotosBloc>(context).add(GetAllMyFotosEvent());
         }
 
         print(state);
@@ -26,7 +28,7 @@ class MisFotos extends StatelessWidget {
           return ListView.builder(
             itemCount: 25,
             itemBuilder: (BuildContext context, int index) {
-              return YoutubeShimmer();
+              return ListTileShimmer();
             },
           );
         } else if (state is misFotosFotosEmptyState) {
