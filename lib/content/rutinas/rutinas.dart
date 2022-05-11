@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutterfire_ui/database.dart';
 import 'package:flutterfire_ui/firestore.dart';
 import 'package:foto_share/content/rutinas/item_public.dart';
 

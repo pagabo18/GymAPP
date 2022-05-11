@@ -32,8 +32,43 @@ class _ItemEsperaState extends State<ItemEspera> {
             ),
             ListTile(
               title: Text("${widget.nonPublicFData["nombre"]}"),
-              subtitle: Text("${widget.nonPublicFData["subtitulo"]}"),
-             
+              subtitle: Text(
+                "${widget.nonPublicFData["subtitulo"]}",
+              ),
+              //add a trailing delete icon to the ListTile
+              trailing: Wrap(children: [
+                IconButton(
+                    onPressed: () {
+                      //show confirmation dialogue
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return AlertDialog(
+                                title: Text("Eliminar"),
+                                content: Text(
+                                    "¿Estás seguro de que quieres eliminar la rutina '${widget.nonPublicFData["nombre"]}'?"),
+                                actions: [
+                                  TextButton(
+                                    child: Text("Cancelar",
+                                        style: TextStyle(color: Colors.red)),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                  TextButton(
+                                      child: Text(
+                                        "Eliminar",
+                                        style: TextStyle(color: Colors.blue),
+                                      ),
+                                      onPressed: () {
+                                        //delete the item
+                                        Navigator.of(context).pop();
+                                      })
+                                ]);
+                          });
+                    },
+                    icon: Icon(Icons.delete)),
+              ]),
             ),
           ],
         ),

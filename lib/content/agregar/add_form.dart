@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foto_share/content/agregar/bloc/create_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:foto_share/content/mis_fotos/bloc/misFotos_bloc.dart';
+import 'package:foto_share/content/mis_fotos/mis_fotos.dart';
 
 class AddForm extends StatefulWidget {
   AddForm({Key? key}) : super(key: key);
@@ -90,13 +92,29 @@ class _AddFormState extends State<AddForm> {
         _nombre.clear();
         _description.clear();
         _subtitulo.clear();
-        _ejerciciosSelected.forEach((element) => element = false);
+        _ejerciciosSelected = [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ];
         image = null;
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text("Guardado exitosamente..."),
           ),
         );
+        BlocProvider.of<misFotosBloc>(context).add(GetAllMyFotosEvent());
       } else if (state is CreatePictureChangedState) {
         image = state.picture;
       }
@@ -216,7 +234,7 @@ class _AddFormState extends State<AddForm> {
                   "ejercicios": _selectedEjer,
                 };
 
-                print("fshareData: $fshareData");
+                //print("fshareData: $fshareData");
 
                 BlocProvider.of<CreateBloc>(context)
                     .add(OnCreateSaveDataEvent(dataToSave: fshareData));

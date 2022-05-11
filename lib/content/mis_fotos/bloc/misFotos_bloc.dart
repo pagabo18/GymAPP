@@ -36,7 +36,10 @@ class misFotosBloc extends Bloc<misFotosEvent, misFotosState> {
       print("List of query fotos: ${ListqueryFotos}");
 
       // lista de documentos filtrados del usuario con sus datos de fotos en espera
-      emit(misFotosFotosSuccessState(myEnableData: ListqueryFotos));
+      if (ListqueryFotos.isEmpty)
+        emit(misFotosFotosEmptyState());
+      else
+        emit(misFotosFotosSuccessState(myEnableData: ListqueryFotos));
     } catch (e) {
       print("Error al obtener items en espera: $e");
       emit(misFotosFotosErrorState());
