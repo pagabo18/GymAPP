@@ -122,6 +122,7 @@ class _AddFormState extends State<AddForm> {
             radius: 30,
             backgroundColor: Colors.purple,
             child: IconButton(
+              tooltip: 'Seleccionar imagen',
               onPressed: () {
                 // BLoC tomar  foto
                 BlocProvider.of<CreateBloc>(context)
@@ -223,6 +224,7 @@ class _AddFormState extends State<AddForm> {
             },
             color: Colors.blue,
           ),
+          SizedBox(height: 24),
         ]),
       );
     });
