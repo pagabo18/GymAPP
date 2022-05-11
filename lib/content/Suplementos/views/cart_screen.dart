@@ -56,10 +56,7 @@ class CartScreen extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 primary: Colors.deepPurple,
               ),
-              onPressed: () => {
-                sendEmail(),
-                print('pago')
-              },
+              onPressed: () => controller.total == 0 ? null : sendEmail(),
               child: Text('Confirmar Pago'),
             ),
             SizedBox(height: 24),
@@ -93,7 +90,7 @@ class CartScreen extends StatelessWidget {
       //..recipients = ['alvinsaurhq@gmail.com'] //A quien le quieres manndar (destino)
       ..subject = 'Confirmation'
       ..text = 'Monto Total : ${controller.total}'
-      ..html = '<h1>Your Purchase Confirmation</h1>\n<p>Here are the list of products</p><img src="cid:myimg@3.141"/>'
+      ..html = '<h1>Your Purchase Confirmation</h1>\n<p>Here are the list of products </p><img src="cid:myimg@3.141"/>'
       ..attachments = [
       FileAttachment(File('$tempPath/image.png'))
         //..location = Location.inline
@@ -103,8 +100,8 @@ class CartScreen extends StatelessWidget {
       await send(message, sntpServer);
       
       Get.snackbar(
-      "Pedido creado correctamente",
-      "Tu pedido ha sido creado correctamete, se envio confirmacion a su corrreo",
+      "Pedido creado exitosamente!",
+      "Tu pedido ha sido creado exitosamente, se envio confirmación a su corrreo",
       snackPosition: SnackPosition.BOTTOM,
       duration: Duration(seconds: 3),
     );
